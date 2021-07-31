@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CoreConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "Example20"
+    }
+  }
+}
