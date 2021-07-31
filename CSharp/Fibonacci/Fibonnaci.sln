@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fibonnaci", "Fibonnaci\Fibonnaci.csproj", "{99BD04EA-B54D-4D02-AE92-8B6127AE841E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99BD04EA-B54D-4D02-AE92-8B6127AE841E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99BD04EA-B54D-4D02-AE92-8B6127AE841E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99BD04EA-B54D-4D02-AE92-8B6127AE841E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99BD04EA-B54D-4D02-AE92-8B6127AE841E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {452722DC-9557-4952-9B68-3F9E1ABB66F5}
+	EndGlobalSection
+EndGlobal
