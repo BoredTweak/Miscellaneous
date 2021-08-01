@@ -1,0 +1,13 @@
+{
+    "errors": [],
+    "result": {
+        "toxicity_annotations": [
+            {
+                "rev_id": 2232.0,
+                "worker_id": 723,
+                "toxicity": 0,
+                "toxicity_score": 0.0
+            }
+        ]
+    }
+}

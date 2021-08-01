@@ -1,0 +1,31 @@
+{
+    "mappings": [
+        {
+            "request": {
+                "url": "/annotations",
+                "method": "OPTIONS"
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "accept, content-type",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "url": "/annotations"
+            },
+            "response": {
+                "status": 200,
+                "bodyFileName": "toxicity_annotations_response.json",
+                "headers" : {
+                  "Access-Control-Allow-Origin" : "*"
+                }
+            }
+        }
+    ]
+}
