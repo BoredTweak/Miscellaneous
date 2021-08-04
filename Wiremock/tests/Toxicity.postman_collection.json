@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "60ac4788-7aa6-49d7-85d3-aef7af156257",
+		"name": "Toxicity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Annotations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get returns expected result\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result.toxicity_annotations[0].rev_id).to.be.a('number');\r",
+							"    pm.expect(jsonData.result.toxicity_annotations[0].worker_id).to.eql(723);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/annotations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"annotations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
