@@ -5,10 +5,12 @@ on:
     branches: [ main ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
-    paths: .\Docker\github-packages
+    paths: 
+      - 'Docker\github-packages\**'
   pull_request:
     branches: [ main ]
-    paths: .\Docker\github-packages
+    paths: 
+      - 'Docker\github-packages\**'
   workflow_dispatch:
 
 env:
