@@ -35,7 +35,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ env.IMAGE_NAME }} .\Docker\github-packages\webapi\
+          docker build -t ${{ env.IMAGE_NAME }} ./Docker/github-packages/webapi
           docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
           
