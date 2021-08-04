@@ -5,12 +5,8 @@ on:
     branches: [ main ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
-    paths: 
-      - 'Docker\github-packages\**'
   pull_request:
     branches: [ main ]
-    paths: 
-      - 'Docker\github-packages\**'
   workflow_dispatch:
 
 env:
@@ -41,5 +37,5 @@ jobs:
         run: |
           docker build -t ${{ env.IMAGE_NAME }} .\Docker\github-packages\webapi\
           docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-          docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+          docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
           
