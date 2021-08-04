@@ -1,5 +1,7 @@
 # Dockerized Postgres
 
+To connect via psql CLI - run `psql dbname=toxicity host=localhost user=docker password=docker port=5432 sslmore=prefer`
+
 ## Flyway
 
 We're leveraging Flyway command line via a docker image to migrate our base postgres instance to our desired state. You can read more on Flyway [here][flyway]. More specifics about the Flyway docker image can be found [here][flyway-docker].
