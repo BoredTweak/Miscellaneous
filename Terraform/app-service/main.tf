@@ -38,9 +38,9 @@ resource "azurerm_app_service" "demo" {
   location            = azurerm_resource_group.demo.location
   resource_group_name = azurerm_resource_group.demo.name
   app_service_plan_id = azurerm_app_service_plan.demo.id
-
+  
   site_config {
-    dotnet_framework_version = "v4.0"
     linux_fx_version    = "DOCKER|ghcr.io/boredtweak/webapi:latest"
+    use_32_bit_worker_process   = true
   }
 }
