@@ -22,18 +22,8 @@ namespace webapi
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "rev_id", Description = "id of the toxicity annotation" }
                 ),
-                resolve: context => data.GetDataByIdAsync(context.GetArgument<string>("rev_id"))
+                resolve: context => data.GetDataByIdAsync(context.GetArgument<decimal>("rev_id"))
             );
-
-            // Alternative approach to adding a query via Func.
-            // Func<IResolveFieldContext, string, object> func = (context, id) => data.GetDataByIdAsync(id);
-            // FieldDelegate<ToxicityAnnotationType>(
-            //     "toxicity_annotation",
-            //     arguments: new QueryArguments(
-            //         new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "rev_id", Description = "id of the toxicity annotation" }
-            //     ),
-            //     resolve: func
-            // );
         }
     }
 }

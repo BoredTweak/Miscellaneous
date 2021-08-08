@@ -2,16 +2,16 @@ using GraphQL.Types;
 
 namespace webapi
 {
-    public class ToxicityAnnotationInterface : InterfaceGraphType<ToxicityAnnotation>
+    public class ToxicityAnnotationInterface : InterfaceGraphType<ToxicityAnnotations>
     {
         public ToxicityAnnotationInterface()
         {
-            Name = "ToxicityAnnotation";
+            Name = "ToxicityAnnotations";
 
-            Field(d => d.rev_id).Description("Rev Id.");
-            Field(d => d.worker_id).Description("Worker Id.");
-            Field(d => d.toxicity).Description("Is the item toxic?");
-            Field(d => d.toxicity_score).Description("How toxic is the item?");
+            Field(d => d.RevId, nullable:true).Description("Rev Id.");
+            Field(d => d.WorkerId, nullable:true).Description("Worker Id.");
+            Field(d => d.Toxicity, nullable:true).Description("Is the item toxic?");
+            Field(d => d.ToxicityScore, nullable:true).Description("How toxic is the item?");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace webapi
                 ),
                 resolve: context =>
                 {
-                    var arg = context.GetArgument<ToxicityAnnotation>("toxicity_annotation");
+                    var arg = context.GetArgument<ToxicityAnnotations>("toxicity_annotation");
                     return data.AddToxicityAnnotation(arg);
                 });
         }

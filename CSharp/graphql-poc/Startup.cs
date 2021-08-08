@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using GraphQL.Server;
 using GraphQL.Types;
+using Microsoft.EntityFrameworkCore;
 
 namespace webapi
 {
@@ -28,13 +29,13 @@ namespace webapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ToxicityData>();
-            services.AddSingleton<ToxicityQuery>();
-            services.AddSingleton<ToxicityMutation>();
-            services.AddSingleton<ToxicityAnnotationInputType>();
-            services.AddSingleton<ToxicityAnnotationType>();
-            services.AddSingleton<ToxicityAnnotationInterface>();
-            services.AddSingleton<ISchema, ToxicitySchema>();
+            services.AddScoped<ToxicityData>();
+            services.AddScoped<ToxicityQuery>();
+            services.AddScoped<ToxicityMutation>();
+            services.AddScoped<ToxicityAnnotationInputType>();
+            services.AddScoped<ToxicityAnnotationType>();
+            services.AddScoped<ToxicityAnnotationInterface>();
+            services.AddScoped<ISchema, ToxicitySchema>();
 
             services.AddLogging(builder => builder.AddConsole());
             services.AddHttpContextAccessor();
@@ -46,6 +47,9 @@ namespace webapi
             .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = true)
             .AddSystemTextJson()
             .AddUserContextBuilder(httpContext => new GraphQLUserContext { User = httpContext.User });
+
+            services.AddDbContext<ToxicityContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("ToxicityDb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

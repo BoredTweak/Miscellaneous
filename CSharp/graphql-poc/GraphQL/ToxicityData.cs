@@ -8,35 +8,22 @@ namespace webapi
 {
     public class ToxicityData
     {
-        private readonly List<ToxicityAnnotation> _data = new List<ToxicityAnnotation>();
+        private readonly ToxicityContext _dbContext;
 
-        public ToxicityData()
+        public ToxicityData(ToxicityContext dbContext)
         {
-            _data.Add(new ToxicityAnnotation
-            {
-                rev_id = "1",
-                worker_id = "Luke",
-                toxicity = 1M,
-                toxicity_score = 2.0M
-            });
-            _data.Add(new ToxicityAnnotation
-            {
-                rev_id = "2",
-                worker_id = "Vader",
-                toxicity = 0M,
-                toxicity_score = 1.0M
-            });
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public Task<ToxicityAnnotation> GetDataByIdAsync(string id)
+        public Task<ToxicityAnnotations> GetDataByIdAsync(decimal id)
         {
-            return Task.FromResult(_data.FirstOrDefault(h => h.rev_id == id));
+            return Task.FromResult(_dbContext.ToxicityAnnotations.FirstOrDefault(h => h.RevId == id));
         }
 
-        public ToxicityAnnotation AddToxicityAnnotation(ToxicityAnnotation input)
+        public ToxicityAnnotations AddToxicityAnnotation(ToxicityAnnotations input)
         {
-            input.rev_id = Guid.NewGuid().ToString();
-            _data.Add(input);
+            _dbContext.Add(input);
+            _dbContext.SaveChanges();
             return input;
         }
     }
