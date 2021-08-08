@@ -1,0 +1,51 @@
+version: '3'
+services:
+
+  flyway:
+    image: flyway/flyway:7.7.1
+    environment:
+         - FLYWAY_USER=docker
+         - FLYWAY_PASSWORD=docker
+    command: migrate 
+              -url=jdbc:postgresql://postgres:5432/toxicity 
+              -locations=filesystem:/flyway/sql 
+              -connectRetries=60
+              -mixed=true
+    volumes:
+      - ./sql:/flyway/sql
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:11
+    restart: always
+    ports:
+    - "5432:5432"
+    environment:
+    - POSTGRES_USER=docker
+    - POSTGRES_PASSWORD=docker
+    volumes:
+      - ./sql/initdb.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../../@shared/wiki-toxicity-data:/repo
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U docker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:5.3
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-user@domain.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-docker}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_SERVER_JSON_FILE: '/config/toxicity_servers.json'
+    volumes:
+      - ./pgadmin:/config
+    ports: 
+      - "5431:80"
+    restart: always
