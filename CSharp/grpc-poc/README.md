@@ -9,3 +9,8 @@ dotnet run --project client/grpc-poc-client.csproj
 ```
 
 Observe logs for Server and Client.
+
+
+Note that both the Client and Server applications store [protocol buffer files](https://developers.google.com/protocol-buffers) and reference them in their `csproj` files.
+
+For more information, refer to [the documentation](https://grpc.io/docs/languages/csharp/).
