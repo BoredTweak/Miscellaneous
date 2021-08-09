@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project demonstrates connecting ESLint and Prettier to a React application.
+
 ## Available Scripts
 
 In the project directory, you can run:
