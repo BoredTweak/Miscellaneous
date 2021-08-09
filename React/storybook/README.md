@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This repository is intended to demonstrate Storybook as a means to show off and play with custom controls.
+
+## Controls
+
+### SillyControl
+
+The [silly control](src/components/silly-control.tsx) demonstrates one workflow for conditional rendering and iterating/map rendering in react.
+
+### EditGrid
+
+[EditGrid](src/components/edit-grid.tsx) is based on React-Data-Grid which is a very flexbile "excel-like" grid control in react.
+
+- [react-data-grid 7.0.0 Canary examples](https://adazzle.github.io/react-data-grid/canary)
+- [react-data-grid 7.0.0 Canary example source code](https://github.com/adazzle/react-data-grid/tree/canary/stories/demos)
+- [react-data-grid GitHub](https://github.com/adazzle/react-data-grid)
+
 ## Available Scripts
 
 In the project directory, you can run:
