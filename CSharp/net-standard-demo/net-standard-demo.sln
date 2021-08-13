@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionLibrary", "ExtensionLibrary\ExtensionLibrary.csproj", "{1111C6F6-BC59-4C94-9877-592848CBD64D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionLibrary", ".\ExtensionLibrary\ExtensionLibrary.csproj", "{1111C6F6-BC59-4C94-9877-592848CBD64D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreConsoleApp", "..\CoreConsoleApp\CoreConsoleApp.csproj", "{973C19F8-B9CF-47D8-965E-01DB4E99AD78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreConsoleApp", ".\CoreConsoleApp\CoreConsoleApp.csproj", "{973C19F8-B9CF-47D8-965E-01DB4E99AD78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionLibrary.Core.Test", "..\ExtensionLibrary.Core.Test\ExtensionLibrary.Core.Test.csproj", "{BDC0D3D7-58FE-4548-8674-217762B56703}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionLibrary.Core.Test", ".\ExtensionLibrary.Core.Test\ExtensionLibrary.Core.Test.csproj", "{BDC0D3D7-58FE-4548-8674-217762B56703}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkConsoleApp", "..\FrameworkConsoleApp\FrameworkConsoleApp.csproj", "{887A0B00-5BA0-4D6B-90CF-BA43B52A1291}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkConsoleApp", ".\FrameworkConsoleApp\FrameworkConsoleApp.csproj", "{887A0B00-5BA0-4D6B-90CF-BA43B52A1291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionLibrary.Framework.Test", "..\ExtensionLibrary.Framework.Test\ExtensionLibrary.Framework.Test.csproj", "{6E4408E4-4ABF-4481-8331-7977CE7FE4E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionLibrary.Framework.Test", ".\ExtensionLibrary.Framework.Test\ExtensionLibrary.Framework.Test.csproj", "{6E4408E4-4ABF-4481-8331-7977CE7FE4E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

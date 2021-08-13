@@ -1,3 +1,5 @@
-Simple Angular 8 app playground. 
+# Angular
 
-Uses Azure Pipelines for building!
+This directory contains [Angular](https://angular.io/cli) specific projects. 
+
+Additionally, there is an Angular demonstration included as part of [the Docker Compose directory](../Docker%20Compose/ChoreHelper/apps/choreui/README.md)
