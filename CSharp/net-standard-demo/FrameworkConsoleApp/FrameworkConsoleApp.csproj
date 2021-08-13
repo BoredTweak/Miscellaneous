@@ -51,7 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExtensionLibrary\ExtensionLibrary\ExtensionLibrary.csproj">
+    <ProjectReference Include="..\ExtensionLibrary\ExtensionLibrary.csproj">
       <Project>{1111c6f6-bc59-4c94-9877-592848cbd64d}</Project>
       <Name>ExtensionLibrary</Name>
     </ProjectReference>
