@@ -1,5 +1,7 @@
 # Azure Functions
 
+Demonstrations of Azure Functions
+
 ## Prerequisites
 
 - Install [.NET 5 SDK](https://dotnet.microsoft.com/download)
