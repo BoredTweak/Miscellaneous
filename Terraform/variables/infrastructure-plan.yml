@@ -1,0 +1,45 @@
+name: Terraform Plan
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+env:
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: example
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Format
+        working-directory: ./infrastructure
+        run: |
+            terraform fmt -check
+
+      - name: Terraform Init
+        working-directory: ./infrastructure
+        run: |
+            terraform init -input=false
+
+      # - name: Terraform Init
+      #   run: |
+      # docker build -t ${{ env.IMAGE_NAME }} ./src
+      # docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/boredtweak/${{ env.IMAGE_NAME }}:latest
+      # docker push ${{ env.REGISTRY }}/boredtweak/${{ env.IMAGE_NAME }}:latest
