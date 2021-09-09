@@ -1,4 +1,4 @@
-# Ansible
+# Azure
 
 This directory contains [Azure][technology-main] specific projects. 
 
