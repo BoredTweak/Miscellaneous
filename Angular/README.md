@@ -1,5 +1,14 @@
 # Angular
 
-This directory contains [Angular](https://angular.io/cli) specific projects. 
+This directory contains [Angular][] specific projects. 
 
-Additionally, there is an Angular demonstration included as part of [the Docker Compose directory](../Docker%20Compose/ChoreHelper/apps/choreui/README.md)
+## Demos
+
+- [A Hello World in Angular][hello-world]
+- [An Angular splash page with some components][angular-spike]
+- [Chore UI with .NET WebAPI and Docker Compose][chore-ui]
+
+[technology-main]: https://angular.io/cli
+[hello-world]: ./hello-world/README.md
+[angular-spike]: ./angular-spike/README.md
+[chore-ui]: ../Docker%20Compose/ChoreHelper/apps/choreui/README.md
