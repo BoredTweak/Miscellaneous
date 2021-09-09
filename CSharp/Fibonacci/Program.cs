@@ -7,7 +7,13 @@ namespace Fibonnaci
         public static void Main(string[] args)
         {
             var n = 15;
+            if(args.Length > 0) 
+            {
+                int.TryParse(args[0], out var inputNumber);
+                n = inputNumber;
+            }
 
+            Console.WriteLine($"Calculating Fibonacci for n = {n}");
             var output = Fibonacci.CalculateFib(n);
             Console.WriteLine($"Fibonacci {output}");
 
