@@ -48,7 +48,7 @@ class Consumer(multiprocessing.Process):
         
 def main():
     tasks = [
-        #Producer(),
+        Producer(),
         Consumer()
     ]
 
