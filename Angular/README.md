@@ -1,6 +1,6 @@
 # Angular
 
-This directory contains [Angular][] specific projects. 
+This directory contains [Angular][technology-main] specific projects. 
 
 ## Demos
 
