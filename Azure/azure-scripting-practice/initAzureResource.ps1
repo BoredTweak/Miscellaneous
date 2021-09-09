@@ -10,7 +10,7 @@ Write-Host "$resourceGroup -- $webAppName -- $githubUrl"
 Write-Host "Create resource group"
 az group create --name $resourceGroup --location 'West US'
 
-Write-Host "Create an App Service plan in STANDARD tier (minimum required by deployment slots)."
+Write-Host "Create an App Service plan in FREE tier (minimum required by deployment slots may be standard)."
 az appservice plan create --name $webAppName --resource-group $resourceGroup --sku F1
 
 Write-Host "Create a web app."
