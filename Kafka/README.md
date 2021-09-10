@@ -16,5 +16,5 @@ There is additionally a [docker-compose definition][docker-compose] to spin up a
 [main-technology]: https://kafka.apache.org/
 [docker-compose]: docker-compose.yml
 [white-paper]: http://notes.stephenholiday.com/Kafka.pdf
-[csharp-producer]: csharp-producer/readme.md
-[python-producer-consumer]: python/readme.md
+[csharp-producer]: csharp-producer/README.md
+[python-producer-consumer]: python/README.md
