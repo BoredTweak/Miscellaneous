@@ -4,16 +4,16 @@ This is an exploration into using Java and Spring for a console application.
 
 This application prints to console each argument it was passed.
 
+## Prerequisites
+
+- [Java Development Kit](https://adoptopenjdk.net/)
+
 ## Local Development
 
 - See available tasks via `.\gradlew tasks`
 - Build via `.\gradlew build` from this directory.
 - Run via `.\gradlew bootRun`
 - Run with CLI arguments via `.\gradlew bootRun --args='apple, banana, orange'`
-
-## Prerequisites
-
-- [Java Development Kit](https://adoptopenjdk.net/)
 
 ## Additional Resources
 
