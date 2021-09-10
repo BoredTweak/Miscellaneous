@@ -3,6 +3,7 @@
 This application was originally generated per [this tutorial](https://spring.io/guides/tutorials/rest/).
 
 **Status: In-Progress**
+
 TODO: 
 - More verbs
 - Connect JPA & H2
