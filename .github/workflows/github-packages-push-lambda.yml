@@ -1,4 +1,4 @@
-name: GitHub Packages Push
+name: GitHub Packages Push Lambda
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: webapi
+  IMAGE_NAME: lambda
 
 
 jobs:
@@ -29,7 +29,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ env.IMAGE_NAME }} ./Docker/github-packages/webapi
+          docker build -t ${{ env.IMAGE_NAME }} ./AWS/lambda-hello-world
           docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/boredtweak/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/boredtweak/${{ env.IMAGE_NAME }}:latest
-          
