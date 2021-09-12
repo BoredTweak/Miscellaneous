@@ -36,6 +36,7 @@ This repository is a collection of small research spikes or projects I've done t
 
 - [Azure](./Azure)
 - [Heroku](./Heroku)
+- [AWS](./AWS)
 
 ### Data Storage
 
