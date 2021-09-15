@@ -43,6 +43,12 @@ Python files defined in a subdirectory which contain a `__init__.py` are searche
 - Enter `package.__file__`
 - Note that the file [`__init__.py`](package/__init__.py) is the file being executed.
 
+#### Importing Package with __all__
+
+- From a terminal in this directory, open the python REPL via running `python`
+- Enter `import package_with_all`
+- Note that the modules imported and listed in [__init__.py](package_with_all/__init__.py) are printed to console while the others are not.
+
 #### Additional Reading
 - [PEP 420][pep-420]
 
