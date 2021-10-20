@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>hello-world</name>
-	<comment>Project hello-world created by Buildship.</comment>
+	<name>net-core</name>
+	<comment>Project net-core created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1634741402944</id>
+			<id>1634741402949</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
