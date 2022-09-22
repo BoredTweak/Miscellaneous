@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ToxicityList from './toxicity-list';
+import Counter from './components/counter';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         >
           Learn React
         </a>
+        <Counter/>
         <ToxicityList/>
       </header>
     </div>
