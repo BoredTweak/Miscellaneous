@@ -9,3 +9,6 @@ Reads out bingo number selection with text to speech.
 - Press enter to draw a number
 - Press Ctrl+C to exit the application
 
+## Additional resources
+
+- [Bingo cards](https://www.papertraildesign.com/bingo-cards/)
