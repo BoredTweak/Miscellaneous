@@ -43,7 +43,7 @@ def parse_number(number):
     elif number < 61:
         bingo = "G" + bingo
     if number >= 61:
-        bingo = "0" + bingo
+        bingo = "O" + bingo
     return bingo
 
 # A method to generate a random number that isn't in the drawn list
