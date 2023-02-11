@@ -1,3 +1,6 @@
-public interface IDispatcher {
-    Task<bool> Dispatch(int input);
+public interface IDispatcher
+{
+    Task<Guid?> Dispatch(int input);
+
+    Task<string?> GetStatus(Guid identifier);
 }

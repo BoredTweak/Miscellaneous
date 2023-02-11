@@ -17,14 +17,28 @@ public class FizzBuzzController : ControllerBase
     }
 
     [HttpPost(Name = "")]
-    public async Task<HttpResponseMessage> Post(int input)
+    public async Task<string> Post(int input)
     {
         _logger.LogInformation("Received input {input}", input);
         var result = await _dispatcher.Dispatch(input);
-        
-        return new HttpResponseMessage(HttpStatusCode.OK)
+        if (result == null)
         {
-            Content = new StringContent(result.ToString())
-        };
+            throw new Exception("Failed to dispatch input");
+        }
+
+        return result.ToString();
+    }
+
+    [HttpGet("{identifier}", Name = "status")]
+    public async Task<string> Get(Guid identifier)
+    {
+        _logger.LogInformation("Received status request for {identifier}", identifier);
+        var result = await _dispatcher.GetStatus(identifier);
+        if (result == null)
+        {
+            throw new Exception("Could not find status for identifier");
+        }
+
+        return result;
     }
 }

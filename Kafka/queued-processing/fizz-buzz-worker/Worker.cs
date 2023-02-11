@@ -48,7 +48,7 @@ public class Worker : BackgroundService
             AutoOffsetReset = AutoOffsetReset.Earliest
         };
 
-        using (var c = new ConsumerBuilder<Ignore, int>(config).Build())
+        using (var c = new ConsumerBuilder<string, int>(config).Build())
         {
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -67,7 +67,7 @@ public class Worker : BackgroundService
                 Console.WriteLine($"Input: {input}, Output: {output}");
 
                 // Output to redis
-                var redisKey = $"fizz-buzz:{input}";
+                var redisKey = consumeResult.Message.Key;
                 redisDb.StringSet(redisKey, output);
             }
         }
