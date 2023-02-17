@@ -25,14 +25,16 @@ public class FizzBuzzDispatcher : IDispatcher
             try
             {
                 var identifier = Guid.NewGuid();
-                Console.WriteLine("Calling Produce");
-                var dr = await p.ProduceAsync(KAFKA_TOPIC, new Message<string, int> { Key = identifier.ToString(), Value = input });
 
                 // Write a message to redis to indicate that the message has been dispatched
                 var redisDb = _redis.GetDatabase();
                 var redisKey = identifier.ToString();
                 await redisDb.StringSetAsync(redisKey, "Dispatched");
-                
+
+                // Write to kafka topic
+                Console.WriteLine("Calling Produce");
+                var dr = await p.ProduceAsync(KAFKA_TOPIC, new Message<string, int> { Key = identifier.ToString(), Value = input });
+
                 Console.WriteLine($"Delivered '{dr.Value}' with key '{dr.Key}' to '{dr.TopicPartitionOffset}'");
                 return identifier;
             }

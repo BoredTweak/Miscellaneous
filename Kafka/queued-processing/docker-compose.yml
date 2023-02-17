@@ -27,8 +27,13 @@ services:
       args:
         - KAFKA_BROKER=kafka:9092
         - REDIS_HOST=redis
+    env_file:
+      - .env
     ports: # expose container port 80 as host port 8080
       - "8080:80"
+    depends_on:
+      - kafka
+      - redis
 
   fizzbuzzworker:
     build:
@@ -36,6 +41,12 @@ services:
       args:
         - KAFKA_BROKER=kafka:9092
         - REDIS_HOST=redis
+    env_file:
+      - .env
+    depends_on:
+      - kafka
+      - redis
+    scale: 3
 
   redis:
     image: redis:latest
