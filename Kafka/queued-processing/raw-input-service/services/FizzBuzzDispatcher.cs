@@ -1,4 +1,5 @@
 using Confluent.Kafka;
+using NewRelic.Api.Agent;
 using StackExchange.Redis;
 
 /// <summary>
@@ -14,6 +15,8 @@ public class FizzBuzzDispatcher : IDispatcher
     }
 
     private const string KAFKA_TOPIC = "raw-input";
+
+    [Trace]
     public async Task<Guid?> Dispatch(int input)
     {
         var kafkaBroker = Environment.GetEnvironmentVariable("KAFKA_BROKER") ?? "localhost:29092";
@@ -46,6 +49,7 @@ public class FizzBuzzDispatcher : IDispatcher
         }
     }
 
+    [Trace]
     public async Task<string?> GetStatus(Guid identifier)
     {
         var redisDb = _redis.GetDatabase();
