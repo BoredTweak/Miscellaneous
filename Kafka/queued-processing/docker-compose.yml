@@ -63,7 +63,10 @@ services:
     depends_on:
       - kafka
       - redis
-    scale: 3
+    deploy:
+      replicas: 3
+      restart_policy:
+        window: 10s
 
   redis:
     image: redis:latest

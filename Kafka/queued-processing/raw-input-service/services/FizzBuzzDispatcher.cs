@@ -5,6 +5,7 @@ using StackExchange.Redis;
 /// <summary>
 /// This class is responsible for dispatching the input to the Kafka topic.
 /// </summary>
+/// <inheritdoc cref="IDispatcher"/>
 public class FizzBuzzDispatcher : IDispatcher
 {
     private readonly IConnectionMultiplexer _redis;
@@ -31,8 +32,12 @@ public class FizzBuzzDispatcher : IDispatcher
 
                 // Write a message to redis to indicate that the message has been dispatched
                 var redisDb = _redis.GetDatabase();
-                var redisKey = identifier.ToString();
-                await redisDb.StringSetAsync(redisKey, "Dispatched");
+
+                // Status key is the identifier:status and value is "Dispatched"
+                var redisKey = $"{identifier.ToString()}:status";
+
+                Console.WriteLine($"Writing to Redis: {redisKey}:status, Dispatched");
+                await redisDb.StringSetAsync(redisKey, "Dispatched", TimeSpan.FromMinutes(60));
 
                 // Write to kafka topic
                 Console.WriteLine("Calling Produce");
@@ -50,10 +55,40 @@ public class FizzBuzzDispatcher : IDispatcher
     }
 
     [Trace]
+    /// <summary>
+    /// Returns the status of the input processing.
+    /// </summary>
+    /// <param name="identifier">The identifier of the input</param>
+    /// <returns> 
+    /// The status of the input processing
+    /// if processed then return ResultStatus.Processed
+    /// if dispatched then return ResultStatus.Dispatched
+    /// if invalid then return ResultStatus.Invalid
+    /// </returns>
+
     public async Task<string?> GetStatus(Guid identifier)
     {
         var redisDb = _redis.GetDatabase();
-        var redisKey = identifier.ToString();
-        return await redisDb.StringGetAsync(redisKey);
+        var statusKey = $"{identifier.ToString()}:status";
+        var result = await redisDb.StringGetAsync(statusKey);
+
+        switch (result)
+        {
+            case "Dispatched":
+                return ResultStatus.Dispatched;
+            case "Processed":
+                return ResultStatus.Processed;
+            default:
+                return ResultStatus.Invalid;
+        }
+    }
+
+    [Trace]
+    public async Task<string?> GetResult(Guid identifier)
+    {
+        var redisDb = _redis.GetDatabase();
+        var resultKey = $"{identifier.ToString()}:result";
+        var result = await redisDb.StringGetAsync(resultKey);
+        return result.ToString();
     }
 }
