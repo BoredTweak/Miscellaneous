@@ -100,27 +100,39 @@ public class Worker : BackgroundService
             {
                 while (true)
                 {
-                    var consumeResult = c.Consume(stoppingToken);
-                    if (consumeResult.IsPartitionEOF)
+                    try
                     {
-                        Console.WriteLine(
-                            $"Reached end of topic {consumeResult.Topic}, partition {consumeResult.Partition}, offset {consumeResult.Offset}.");
+                        var consumeResult = c.Consume(stoppingToken);
 
+                        if (consumeResult.IsPartitionEOF)
+                        {
+                            Console.WriteLine(
+                                $"Reached end of topic {consumeResult.Topic}, partition {consumeResult.Partition}, offset {consumeResult.Offset}.");
+
+                            continue;
+                        }
+
+                        var input = consumeResult.Message.Value;
+                        var key = consumeResult.Message.Key;
+                        var output = Process(input);
+                        Console.WriteLine($"Input: {input}, Output: {output}");
+
+                        // Store the result in Redis
+                        Console.WriteLine($"Writing to Redis: {key}:result, {output}");
+                        redisDb.StringSet($"{key}:result", output, TimeSpan.FromMinutes(60));
+
+                        Console.WriteLine($"Writing to Redis: {key}:status, Processed");
+                        redisDb.StringSet($"{key}:status", "Processed", TimeSpan.FromMinutes(60));
+                    }
+                    catch (ConsumeException e)
+                    {
+                        Console.WriteLine($"Consume error: {e.Error.Reason}");
+
+                        // If the topic does not exist, wait a bit and try again
+                        Thread.Sleep(1000);
                         continue;
                     }
-
-                    var input = consumeResult.Message.Value;
-                    var output = Process(input);
-                    Console.WriteLine($"Input: {input}, Output: {output}");
-
-                    // Output to redis
-                    var redisKey = consumeResult.Message.Key;
-                    redisDb.StringSet(redisKey, output);
                 }
-            }
-            catch (ConsumeException e)
-            {
-                Console.WriteLine($"Consume error: {e.Error.Reason}");
             }
             catch (OperationCanceledException)
             {
