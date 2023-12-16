@@ -1,7 +1,36 @@
-# Flask App
+# Order Processing App
 
-This project is a simple Flask application which increments a value in redis on every GET request to `/`.
+This is an example order processing Flask application.
+
+## Prerequisites
+
+Before running this application, make sure you have the following installed:
+
+- [Python](https://www.python.org/downloads/)
+- [Docker](https://www.docker.com/get-started)
 
 ## Running locally
 
-A docker compose definition is provided in the root that will provide and configure the Redis dependency. Run `docker compose up` from a terminal instance in this directory then make a GET request to `http://localhost:5000/`
+1. Navigate to the project directory:
+
+    ```bash
+    cd order-processing-app
+    ```
+
+2. Install the Python dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Start the Redis container using Docker Compose:
+
+    ```bash
+    docker-compose up -d
+    ```
+
+4. Run the flask application:
+
+    ```bash
+    py app.py
+    ```
